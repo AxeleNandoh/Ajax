@@ -2,7 +2,7 @@
 
 require_once('config.php');
 
-$query = 'SELECT * FROM persone';
+$query = 'SELECT * FROM users';
 $result = $connection->query($query);
 
 if($result) {
@@ -10,14 +10,14 @@ if($result) {
 
         $data = [];
 
-        while($row = $result->fetch_array(MYSQL_ASSOC)){
+        while($row = $result->fetch_array(MYSQLI_ASSOC)){
 
             $temp;
             $temp['id'] = $row['id'];
-            $temp['nome'] = $row['nome'];
-            $temp['cognome'] = $row['cognome'];
+            $temp['firstName'] = $row['firstName'];
+            $temp['lastName'] = $row['lastName'];
             $temp['email'] = $row['email'];
-            array_push($data, $tmp);
+            array_push($data, $temp);
         }
         echo json_encode($data);
 
