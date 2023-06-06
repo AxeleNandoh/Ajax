@@ -1,6 +1,6 @@
 let persone;
 
-fetch('./php/selector.php', {
+fetch('./php/query/selector.php', {
     method: 'POST',
     header: {
         'Content-Type': 'application/json',
