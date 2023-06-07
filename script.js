@@ -1,13 +1,6 @@
 import * as tableJs from "./table.js";
 
-<<<<<<< HEAD
 fetch('./php/query/selector.php', {
-=======
-let tbody = document.querySelector('#dynamicTable tbody');
-
-// chiamata ajax ;
-fetch('./php/selector.php', {
->>>>>>> 712ba506bd89f230f6ab90ec68a58488e96daeff
     method: 'POST',
     header: {
         'Content-Type': 'application/json',

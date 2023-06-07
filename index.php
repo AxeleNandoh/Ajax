@@ -28,6 +28,7 @@
         <th scope="col">Actions</th>
       </tr>
     </thead>
+    <!-- body dinamico con chiamata ajax -->
     <tbody>
     </tbody>
   </table>
