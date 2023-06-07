@@ -29,7 +29,7 @@
       </tr>
     </thead>
     <!-- body dinamico con chiamata ajax -->
-    <tbody>
+    <tbody id='tbody'>
     </tbody>
   </table>
 

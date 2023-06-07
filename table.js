@@ -4,6 +4,7 @@ export function createTableCell(value) {
     return cell;
 }
 
+
 export function createActionTableCell(persona) {
     const actionTd = document.createElement('td');
     const editButton = createActionButton('Edit', 'warning');
@@ -23,9 +24,16 @@ export function createActionTableCell(persona) {
     return actionTd;
 }
 
+
 export function createActionButton(text, color) {
     const button = document.createElement('button');
     button.textContent = text;
     button.classList.add('btn', `btn-${color}`);
     return button;
+}
+
+
+export function insertPerson(){
+
+    console.log('Persona insert coglionazzooooo');
 }
