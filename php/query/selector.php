@@ -1,6 +1,6 @@
 <?php 
 
-require_once('config.php');
+require_once('../config.php');
 
 $query = 'SELECT * FROM users';
 $result = $connection->query($query);

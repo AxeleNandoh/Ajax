@@ -1,4 +1,4 @@
-import * as tableJs from "./table.js";
+import { createTableCell, createActionTableCell } from "./table.js";
 
 fetch('./php/query/selector.php', {
     method: 'POST',
@@ -12,12 +12,13 @@ fetch('./php/query/selector.php', {
     console.log('Dati ricevuti dalla response = ', persone);
 
     persone.forEach(persona => {
+        tbody.document.querySelector('#tbody');
         const row = document.createElement('tr');
-        const id = tableJs.createTableCell(persona.id);
-        const firstName = tableJs.createTableCell(persona.firstName);
-        const lastName = tableJs.createTableCell(persona.lastName);
-        const email = tableJs.createTableCell(persona.email);
-        const actionTd = tableJs.createActionTableCell(persona);
+        const id = createTableCell(persona.id);
+        const firstName = createTableCell(persona.firstName);
+        const lastName = createTableCell(persona.lastName);
+        const email = createTableCell(persona.email);
+        const actionTd = createActionTableCell(persona);
         
         row.appendChild(id);
         row.appendChild(firstName);
@@ -32,12 +33,20 @@ fetch('./php/query/selector.php', {
     console.error('opss Errore Something goes wrong', err);
 });
 
-const formDatiInseriti = new FormData();
-formmDatiInseriti.append('nome', 'Giovanni');
-formmDatiInseriti.append('cognome', 'Bavoso');
-formmDatiInseriti.append('email', 'Giovanni@strunz.it');
+// INSERT DEI DATI
+const formDatifake = new FormData();
+let persona;
+let inserisciPersona = document.getElementById('newRow');
 
-fetch('./php/query/insert.php', {
+
+inserisciPersona.addEventListener('click', () => insertPerson);
+
+
+formDatifake.append('firstName', 'Mark');
+formDatifake.append('lastName', 'Rondinelli');
+formDatifake.append('email', 'mark@gmail.com');
+
+fetch('./php/query/selector.php', {
     method: 'POST',
     header: {
         'Content-Type': 'application/json',
