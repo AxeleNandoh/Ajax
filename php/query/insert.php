@@ -1,9 +1,12 @@
 <?php 
 
-// require_once('config.php');
+require_once('config.php');
 
-// $query = 'SELECT * FROM persone';
-// $result = $connection->query($query);
+$nome = '';
+$cognome = '';
+$email = '';
+
+$query = "INSERT INTO users(nome, cognome, email) VALUES ($nome, $cognome, $email)";
 
 // if($result) {
 //     if($result->num_rows > 0) {

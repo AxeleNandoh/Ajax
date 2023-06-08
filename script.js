@@ -1,13 +1,6 @@
 import * as tableJs from "./table.js";
 
-<<<<<<< HEAD
 fetch('./php/query/selector.php', {
-=======
-let tbody = document.querySelector('#dynamicTable tbody');
-
-// chiamata ajax ;
-fetch('./php/selector.php', {
->>>>>>> 712ba506bd89f230f6ab90ec68a58488e96daeff
     method: 'POST',
     header: {
         'Content-Type': 'application/json',
@@ -37,4 +30,25 @@ fetch('./php/selector.php', {
 })
 .catch((err) => {
     console.error('opss Errore Something goes wrong', err);
+});
+
+const formDatiInseriti = new FormData();
+formmDatiInseriti.append('nome', 'Giovanni');
+formmDatiInseriti.append('cognome', 'Bavoso');
+formmDatiInseriti.append('email', 'Giovanni@strunz.it');
+
+fetch('./php/query/insert.php', {
+    method: 'POST',
+    header: {
+        'Content-Type': 'application/json',
+    },
+    body: formDatiInseriti
+})
+.then(response => response.json())
+.then(data => {
+    // const persone = data;
+    console.log('Dati ricevuti dalla response hahahahahah = ', data);
+})
+.catch((err) => {
+    console.error('Cazzzoooooo un Errore Something goes wrong!!', err);
 });
