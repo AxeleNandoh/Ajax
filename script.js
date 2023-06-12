@@ -1,4 +1,4 @@
-import { createTableCell, createActionTableCell } from "./table.js";
+import * as tableJs from "./table.js";
 
 fetch('./php/query/selector.php', {
     method: 'POST',
@@ -14,11 +14,11 @@ fetch('./php/query/selector.php', {
     persone.forEach(persona => {
         tbody.document.querySelector('#tbody');
         const row = document.createElement('tr');
-        const id = createTableCell(persona.id);
-        const firstName = createTableCell(persona.firstName);
-        const lastName = createTableCell(persona.lastName);
-        const email = createTableCell(persona.email);
-        const actionTd = createActionTableCell(persona);
+        const id = tableJs.createTableCell(persona.id);
+        const firstName = tableJs.createTableCell(persona.firstName);
+        const lastName = tableJs.createTableCell(persona.lastName);
+        const email = tableJs.createTableCell(persona.email);
+        const actionTd = tableJs.createActionTableCell(persona);
         
         row.appendChild(id);
         row.appendChild(firstName);
