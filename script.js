@@ -51,13 +51,13 @@ fetch('./php/query/selector.php', {
     header: {
         'Content-Type': 'application/json',
     },
-    body: formDatifake
+    body: formDatiInseriti
 })
 .then(response => response.json())
 .then(data => {
-    console.log('Dati ricevuti dalla response = ', persone);
-
+    // const persone = data;
+    console.log('Dati ricevuti dalla response hahahahahah = ', data);
 })
 .catch((err) => {
-    console.error('opss Errore Something goes wrong', err);
+    console.error('Cazzzoooooo un Errore Something goes wrong!!', err);
 });
