@@ -1,63 +1,41 @@
 import * as tableJs from "./table.js";
 
-fetch('./php/query/selector.php', {
-    method: 'POST',
-    header: {
-        'Content-Type': 'application/json',
-    }
+fetch("./php/query/selector.php", {
+  method: "POST",
+  header: {
+    "Content-Type": "application/json",
+  },
 })
-.then(response => response.json())
-.then(data => {
+  .then((response) => response.json())
+  .then((data) => {
     const persone = data;
-    console.log('Dati ricevuti dalla response = ', persone);
+    console.log("Dati ricevuti dalla response = ", persone);
 
-    persone.forEach(persona => {
-        tbody.document.querySelector('#tbody');
-        const row = document.createElement('tr');
-        const id = tableJs.createTableCell(persona.id);
-        const firstName = tableJs.createTableCell(persona.firstName);
-        const lastName = tableJs.createTableCell(persona.lastName);
-        const email = tableJs.createTableCell(persona.email);
-        const actionTd = tableJs.createActionTableCell(persona);
-        
-        row.appendChild(id);
-        row.appendChild(firstName);
-        row.appendChild(lastName);
-        row.appendChild(email);
-        row.appendChild(actionTd);
-        
-        tbody.appendChild(row);
+    persone.forEach((persona) => {
+      let tbody = document.querySelector("#tbody");
+      const row = document.createElement("tr");
+      const id = tableJs.createTableCell(persona.id);
+      const firstName = tableJs.createTableCell(persona.firstName);
+      const lastName = tableJs.createTableCell(persona.lastName);
+      const email = tableJs.createTableCell(persona.email);
+      const actionTd = tableJs.createActionTableCell(persona);
+
+      row.appendChild(id);
+      row.appendChild(firstName);
+      row.appendChild(lastName);
+      row.appendChild(email);
+      row.appendChild(actionTd);
+
+      tbody.appendChild(row);
     });
-})
-.catch((err) => {
-    console.error('opss Errore Something goes wrong', err);
-});
+  })
+  .catch((err) => {
+    console.error("opss Errore Something goes wrong", err);
+  });
 
 // INSERT DEI DATI
 const formDatifake = new FormData();
 let persona;
-let inserisciPersona = document.getElementById('newRow');
+let inserisciPersona = document.getElementById("newRow");
 
-
-inserisciPersona.addEventListener('click', () => insertPerson);
-
-
-formDatifake.append('firstName', 'Mark');
-formDatifake.append('lastName', 'Rondinelli');
-formDatifake.append('email', 'mark@gmail.com');
-
-fetch('./php/query/selector.php', {
-    method: 'POST',
-    header: {
-        'Content-Type': 'application/json',
-    },
-    body: formDatiInseriti
-})
-.then(response => response.json())
-.then(data => {
-    // const persone = data;
-    console.log('Dati ricevuti dalla response hahahahahah = ', data);
-})
-.catch((err) => {
-    console.error('Cazzzoooooo un Errore Something goes wrong!!', err);
-});
+inserisciPersona.addEventListener("click", () => tableJs.insertPerson(formDatifake));
